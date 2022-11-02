@@ -11,7 +11,12 @@ class Person < Nameable
     @name = name
     @age = age 
     @parent_permission = parent_permission
+    @rentals = []
   end 
+
+  def rent_book(rental)
+    @rentals.push(rental)
+end
 
   def can_use_services?
     of_age? || @parent_permission
