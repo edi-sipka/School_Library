@@ -26,7 +26,7 @@ class App
     when "4"
       create_book
     when "5"
-      puts "Five"
+      create_rental 
     when "6"
       puts "Six"
     else
@@ -36,13 +36,31 @@ end
 
 def list_books 
   @books.each do |book|
-    puts book
+   book.instance_variables.each do |var|
+    text = ""
+    value = book.instance_variable_get(var)
+    var = var.to_s.delete("@")
+    var = var.capitalize
+    unless var.include?("Rentals")
+    text += "#{var}:#{value} "
   end
+    print text 
+  end
+ end
 end
 
   def list_people 
     @people.each do |person|
-      puts person
+      person.instance_variables.each do |var|
+        text = ""
+        value = person.instance_variable_get(var)
+        var = var.to_s.delete("@")
+        var = var.capitalize
+        unless var.include?("Rentals") or var.include?("Classroom")
+          text += "#{var}:#{value} "
+        end
+        print text 
+      end
     end
   end
 
@@ -91,5 +109,41 @@ def create_book
   book = Book.new(title, author)
   @books.push(book)
   puts "Book created successfully"
+end 
+
+def create_rental 
+  puts "Select which book are you going to rent:"
+  puts ""
+  list_books 
+  select_book = gets.chomp
+  @books.each_with_index do |book, index|
+    if select_book == index do 
+      book.instance_variables.each do |var|
+        text = "#{index}) " 
+        value = book.instance_variable_get(var)
+        var = var.to_s.delete("@")
+        var = var.capitalize
+        unless var.include?("Rentals")
+        text += "#{var}:#{value} "
+      end
+        print text 
+    end
+  end
 end
-endANA
+end
+    
+
+  puts "Select who is going to rent it:"
+  puts ""
+  list_people 
+  select_person = gets.chomp
+
+  puts "Select your rental date:"
+  puts ""
+  date = gets.chomp.to_i
+
+rental = Rental.new(date, @books[select_book], @people[select_person])
+@rentals.push(rental)
+puts "Created Rental!"
+end
+end
