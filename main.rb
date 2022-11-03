@@ -3,7 +3,6 @@ require_relative 'app'
 class Main 
   
   def choose_option
-    puts "Welcome to School Library App!"
     puts ""
     puts "Please choose an option by entering a number:"
     puts "1 - List all books"
@@ -17,8 +16,9 @@ class Main
 
 def start 
   new_app = App.new
-   
-  loop do 
+  puts "Welcome to School Library App!"
+
+  loop do
     choose_option
     option = gets.chomp
 
@@ -28,7 +28,6 @@ def start
   end 
 end
 end
-
 
 def main
   app = Main.new

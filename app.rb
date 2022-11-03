@@ -38,11 +38,13 @@ def list_books
   @books.each do |book|
     puts book
   end
+end
 
   def list_people 
     @people.each do |person|
       puts person
     end
+  end
 
     def create_person 
       puts "Do you want to create a student(1) or a teacher(2)?"
@@ -64,7 +66,7 @@ def list_books
       name = gets.chomp 
       puts "Has parent permission? [Y/N]"
       parent_permission = gets.chomp.upcase == "Y"
-      student = Student.new (age, 'Unknown', parent_permission, name)
+      student = Student.new(age, parent_permission, name, "Unknown")
       @people.push(student)
       puts "You added student successfully"
 end
@@ -76,7 +78,7 @@ def create_teacher
   name = gets.chomp 
   puts "Specialization:"
   specialization = gets.chomp
-  teacher = Teacher.new (age, name, specialization)
+  teacher = Teacher.new(age, name, specialization)
   @people.push(teacher)
   puts "You added teacher successfully"
 end
@@ -90,8 +92,4 @@ def create_book
   @books.push(book)
   puts "Book created successfully"
 end
-
-
-
-end
-    
+endANA
