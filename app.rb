@@ -1,7 +1,9 @@
-require_relative "book"
-require_relative "classroom"
-require_relative "student"
-require_relative "teacher"
+require_relative 'teacher'
+require_relative 'book'
+require_relative 'rental'
+require_relative 'student'
+require_relative 'classroom'
+
 
 
 class App 
@@ -20,13 +22,15 @@ class App
     when "2"
       list_people
     when "3"
-      puts "Three"
+      create_person 
     when "4"
-      puts "Four"
+      create_book
     when "5"
       puts "Five"
     when "6"
       puts "Six"
+    else
+      puts "Please select a valid option from the list!"
     end
 end 
 
@@ -60,7 +64,7 @@ def list_books
       name = gets.chomp 
       puts "Has parent permission? [Y/N]"
       parent_permission = gets.chomp.upcase == "Y"
-      student = Student.new (age, name, parent_permission)
+      student = Student.new (age, 'Unknown', parent_permission, name)
       @people.push(student)
       puts "You added student successfully"
 end
@@ -72,7 +76,7 @@ def create_teacher
   name = gets.chomp 
   puts "Specialization:"
   specialization = gets.chomp
-  teacher = Teacher.new (specialization, age, name)
+  teacher = Teacher.new (age, name, specialization)
   @people.push(teacher)
   puts "You added teacher successfully"
 end
@@ -88,7 +92,6 @@ def create_book
 end
 
 
+
 end
-
-
     
