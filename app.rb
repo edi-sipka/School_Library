@@ -4,8 +4,6 @@ require_relative 'rental'
 require_relative 'student'
 require_relative 'classroom'
 
-
-
 class App 
   attr_accessor :books, :rentals, :people
   
@@ -26,9 +24,9 @@ class App
     when "4"
       create_book
     when "5"
-      create_rental 
+    create_rental
     when "6"
-      puts "Six"
+     list_rentals
     else
       puts "Please select a valid option from the list!"
     end
@@ -87,7 +85,7 @@ end
       student = Student.new(age, parent_permission, name, "Unknown")
       @people.push(student)
       puts "You added student successfully"
-end
+     end
 
 def create_teacher
   puts "Age:"
@@ -111,39 +109,56 @@ def create_book
   puts "Book created successfully"
 end 
 
-def create_rental 
-  puts "Select which book are you going to rent:"
-  puts ""
-  list_books 
-  select_book = gets.chomp
+def books_with_index
   @books.each_with_index do |book, index|
-    if select_book == index do 
-      book.instance_variables.each do |var|
-        text = "#{index}) " 
-        value = book.instance_variable_get(var)
-        var = var.to_s.delete("@")
-        var = var.capitalize
-        unless var.include?("Rentals")
-        text += "#{var}:#{value} "
-      end
-        print text 
+    text = "#{index}: "
+    book.instance_variables.each do |var|
+      val = book.instance_variable_get(var)
+      var = var.to_s.delete('@')
+      text += "#{var}:#{val} "
     end
+    puts text
   end
 end
+
+def people_with_index
+  @people.each_with_index do |person, index|
+    text = "#{index}: "
+    person.instance_variables.each do |var|
+      val = person.instance_variable_get(var)
+      var = var.to_s.delete('@')
+      text += "#{var}:#{val} "
+    end
+    puts text
+  end
 end
-    
 
-  puts "Select who is going to rent it:"
-  puts ""
-  list_people 
-  select_person = gets.chomp
-
-  puts "Select your rental date:"
-  puts ""
-  date = gets.chomp.to_i
-
-rental = Rental.new(date, @books[select_book], @people[select_person])
-@rentals.push(rental)
-puts "Created Rental!"
+def create_rental
+  puts 'Select a book from the following list by number'
+  books_with_index
+  selected_book = gets.chomp.to_i
+  puts
+  puts 'Select a person from the following list by number (not ID)'
+  people_with_index
+  selected_person = gets.chomp.to_i
+  puts
+  print 'Date: '
+  date = gets.chomp
+  rental = Rental.new(date, @books[selected_book], @people[selected_person])
+  @rentals.push(rental)
+  puts 'Rental created successfully'
 end
+
+def list_rentals
+  @rentals.each do |rental|
+    rental.instance_variables.each do |var|
+     text = ""
+     value = rental.instance_variable_get(var)
+     var = var.to_s.delete("@")
+     var = var.capitalize
+     text += "#{var}:#{value} "
+     print text 
+   end
+  end
+ end
 end
