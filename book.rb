@@ -11,3 +11,4 @@ attr_accessor :title, :author
     @rentals.push(rental)
 end
 end
+
