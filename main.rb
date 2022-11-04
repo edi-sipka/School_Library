@@ -22,8 +22,6 @@ def start
     choose_option
     option = gets.chomp
 
-    break if option == "7"
-
     new_app.selected_option(option)
   end 
 end

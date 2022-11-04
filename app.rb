@@ -69,7 +69,7 @@ end
       choise = gets.chomp
       
       if choise == "1"
-        create_student 
+        create_studen
       elsif choise == "2"
         create_teacher
       else
