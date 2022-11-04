@@ -3,6 +3,7 @@ require_relative 'book'
 require_relative 'rental'
 require_relative 'student'
 require_relative 'classroom'
+require_relative 'person'
 
 class App 
   attr_accessor :books, :rentals, :people
@@ -42,7 +43,7 @@ def list_books
     unless var.include?("Rentals")
     text += "#{var}:#{value} "
   end
-    print text 
+    puts text 
   end
  end
 end
@@ -57,10 +58,11 @@ end
         unless var.include?("Rentals") or var.include?("Classroom")
           text += "#{var}:#{value} "
         end
-        print text 
+        puts text 
       end
     end
   end
+
 
     def create_person 
       puts "Do you want to create a student(1) or a teacher(2)?"
@@ -115,8 +117,10 @@ def books_with_index
     book.instance_variables.each do |var|
       val = book.instance_variable_get(var)
       var = var.to_s.delete('@')
+      unless var.include?("rentals") or var.include?("classroom")
       text += "#{var}:#{val} "
     end
+  end
     puts text
   end
 end
@@ -127,8 +131,10 @@ def people_with_index
     person.instance_variables.each do |var|
       val = person.instance_variable_get(var)
       var = var.to_s.delete('@')
+      unless var.include?("rentals") or var.include?("classroom")
       text += "#{var}:#{val} "
     end
+  end
     puts text
   end
 end
@@ -137,28 +143,35 @@ def create_rental
   puts 'Select a book from the following list by number'
   books_with_index
   selected_book = gets.chomp.to_i
-  puts
   puts 'Select a person from the following list by number (not ID)'
   people_with_index
   selected_person = gets.chomp.to_i
-  puts
   print 'Date: '
   date = gets.chomp
-  rental = Rental.new(date, @books[selected_book], @people[selected_person])
+  book = @books[selected_book]
+  person = @people[selected_person]
+  rental = Rental.new(date, book, person)
   @rentals.push(rental)
   puts 'Rental created successfully'
 end
 
 def list_rentals
+  print 'To see person rentals enter the person ID: '
+  id = gets.chomp.to_i
+  puts 'Rented Books:'
   @rentals.each do |rental|
-    rental.instance_variables.each do |var|
-     text = ""
-     value = rental.instance_variable_get(var)
-     var = var.to_s.delete("@")
-     var = var.capitalize
-     text += "#{var}:#{value} "
-     print text 
-   end
-  end
- end
+    person = rental.instance_variable_get(:@person)
+    person_id = person.instance_variable_get(:@id)
+
+    if person_id == id
+   book = rental.instance_variable_get(:@book)
+   title = book.instance_variable_get(:@title)
+   author = book.instance_variable_get(:@author)
+  puts "Date: #{rental.date} Book: #{title} by Author: #{author} "
+
+    end
 end
+    end
+  end
+
+
