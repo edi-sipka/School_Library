@@ -1,6 +1,7 @@
 require_relative 'select'
 
 class Main 
+  
   def choose_option
     puts ""
     puts "Please choose an option by entering a number:"
@@ -13,25 +14,19 @@ class Main
     puts "7 - Exit"
   end
 
-def start 
-  select = Select.new
-  puts "Welcome to School Library App!"
-
-  loop do
-    choose_option
-    option = gets.chomp
-
-    break if option == "7"
-
-    select.selected_option(option)
+ def start 
+   select = Select.new
+   puts "Welcome to School Library App!"
+   loop do
+   choose_option
+   option = gets.chomp
+   break if option == "7"
+   select.selected_option(option)
   end 
-end
-end
+   end
+     end
 
-  def main
-    main_app = Main.new
-    main_app.start
-  end
+    main = Main.new
+    main.start
 
-main
   

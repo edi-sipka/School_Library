@@ -18,13 +18,19 @@ To get a local copy of this program, Please follow these simple example steps.
 4. Run this command `code .` to open this folder in VScode
 5. Open terminal and run this command `ruby main.rb`
 
-## Author
+## Authors
 
 👤 _Edi Sipka_
 
 - GitHub: [@Edi-Sipka](https://github.com/edi-sipka)
 - Twitter: [@sipka_edii](https://twitter.com/sipka_edii)
 - LinkedIn: [Edi Sipka](https://www.linkedin.com/in/edi-%C5%A1ipka-5b681b202/)
+
+👤 **Mohammed Hussen (binhussen)**
+
+- GitHub: [@binhussen](https://github.com/binhussen)
+- Twitter: [@binhussens](https://twitter.com/binhussens)
+- LinkedIn: [Linkedin](https://www.linkedin.com/in/binhussen/)
 
 ## 🤝 Contributing
 
