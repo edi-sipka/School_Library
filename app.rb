@@ -14,25 +14,6 @@ class App
     @people = []
   end
 
-  def selected_option(option)
-    case option 
-    when "1"
-      list_books
-    when "2"
-      list_people
-    when "3"
-      create_person 
-    when "4"
-      create_book
-    when "5"
-    create_rental
-    when "6"
-     list_rentals
-    else
-      puts "Please select a valid option from the list!"
-    end
-end 
-
 def list_books 
   @books.each do |book|
    book.instance_variables.each do |var|
