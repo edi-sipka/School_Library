@@ -150,9 +150,9 @@ def list_rentals
    author = book.instance_variable_get(:@author)
   puts "Date: #{rental.date} Book: #{title} by Author: #{author} "
 
-    end
 end
-    end
+ end
   end
+   end
 
 
