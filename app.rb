@@ -4,12 +4,14 @@ require_relative 'rental'
 require_relative 'student'
 require_relative 'classroom'
 require_relative 'person'
+require_relative 'data'
 
 class App 
   attr_accessor :books, :rentals, :people
   
-  def initialize 
-    @books = []
+  def initialize
+    @data = Data.new
+    @books = @data.load_books
     @rentals = []
     @people = []
   end
@@ -89,6 +91,7 @@ def create_book
   author = gets.chomp 
   book = Book.new(title, author)
   @books.push(book)
+  @data.create_book(book)
   puts "Book created successfully"
 end 
 
