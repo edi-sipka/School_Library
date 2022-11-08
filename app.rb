@@ -67,7 +67,7 @@ end
       name = gets.chomp 
       puts "Has parent permission? [Y/N]"
       parent_permission = gets.chomp.upcase == "Y"
-      student = Student.new(age, parent_permission, name, "Unknown")
+      student = Student.new(age, name,parent_permission, "Unknown")
       @people.push(student)
       @data.create_person(student)
       puts "You added student successfully"

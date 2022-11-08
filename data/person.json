@@ -12,27 +12,21 @@
     "parent_permission": false
   },
   {
-    "type": "teacher",
-    "name": "Ahmed",
-    "age": 23,
-    "specialization": "Doctor"
-  },
-  {
-    "name": "Unknown",
-    "age": "22",
-    "specialization": "Doctor",
+    "name": "na12",
+    "age": "12",
+    "specialization": "sw",
     "type": "teacher"
   },
   {
-    "name": "Unknown",
-    "age": "45",
-    "specialization": "Software",
-    "type": "teacher"
+    "name": true,
+    "age": "55",
+    "parent_permission": "name55",
+    "type": "student"
   },
   {
-    "name": "Unknown",
-    "age": "18",
-    "specialization": "Medior",
-    "type": "teacher"
+    "name": "firts",
+    "age": "11",
+    "parent_permission": false,
+    "type": "student"
   }
 ]

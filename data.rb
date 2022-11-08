@@ -34,7 +34,7 @@ class Data
     stored_person.map do |person|
 
       if person["type"] == "student"
-        @person << Student.new(person['age'], person['parent_permission'], person['name']) 
+        @person << Student.new(person['age'], person['name'], person['parent_permission'])
       elsif person ["type"] == "teacher"
         @person << Teacher.new(person['age'], person['name'], person['specialization']) 
       end 
