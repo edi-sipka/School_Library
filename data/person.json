@@ -1,0 +1,38 @@
+[
+  {
+    "type": "teacher",
+    "name": "Edi",
+    "age": 23,
+    "specialization": "Doctor"
+  },
+  {
+    "type": "student",
+    "name": "Mohammed",
+    "age": 24,
+    "parent_permission": false
+  },
+  {
+    "type": "teacher",
+    "name": "Ahmed",
+    "age": 23,
+    "specialization": "Doctor"
+  },
+  {
+    "name": "Unknown",
+    "age": "22",
+    "specialization": "Doctor",
+    "type": "teacher"
+  },
+  {
+    "name": "Unknown",
+    "age": "45",
+    "specialization": "Software",
+    "type": "teacher"
+  },
+  {
+    "name": "Unknown",
+    "age": "18",
+    "specialization": "Medior",
+    "type": "teacher"
+  }
+]

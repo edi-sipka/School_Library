@@ -13,7 +13,7 @@ class App
     @data = Data.new
     @books = @data.load_books
     @rentals = []
-    @people = []
+    @people = @data.load_person
   end
 
 def list_books 
@@ -69,6 +69,7 @@ end
       parent_permission = gets.chomp.upcase == "Y"
       student = Student.new(age, parent_permission, name, "Unknown")
       @people.push(student)
+      @data.create_person(student)
       puts "You added student successfully"
      end
 
@@ -81,6 +82,7 @@ def create_teacher
   specialization = gets.chomp
   teacher = Teacher.new(age, name, specialization)
   @people.push(teacher)
+  @data.create_person(teacher)
   puts "You added teacher successfully"
 end
 
