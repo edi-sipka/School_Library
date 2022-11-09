@@ -1,22 +1,7 @@
 [
   {
-    "date": "2022-03-02",
-    "book": "Harry Potter",
-    "person": "Edi"
-  },
-  {
-    "date": "2021-04-02",
-    "book": "Lord of the Rings",
-    "person": "Ahmed"
-  },
-  {
-    "date": "124",
-    "book": "#<Book:0x000001add39fdb98>",
-    "person": null
-  },
-  {
-    "date": "12",
-    "book": "#<Book:0x000001add39fdb98>",
-    "person": "#<Teacher:0x000001add39fd378>"
+    "date": "45",
+    "book": "#<Book:0x000001a82eacdb18>",
+    "person": "#<Teacher:0x000001a82eacd410>"
   }
 ]

@@ -10,29 +10,12 @@
     "name": "Mohammed",
     "age": 24,
     "parent_permission": false
+
   },
   {
     "name": "na12",
     "age": "12",
     "specialization": "sw",
     "type": "teacher"
-  },
-  {
-    "name": true,
-    "age": "55",
-    "parent_permission": "name55",
-    "type": "student"
-  },
-  {
-    "name": "firts",
-    "age": "11",
-    "parent_permission": false,
-    "type": "student"
-  },
-  {
-    "name": "Edi",
-    "age": "2",
-    "parent_permission": true,
-    "type": "student"
   }
 ]

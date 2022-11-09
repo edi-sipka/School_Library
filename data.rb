@@ -69,7 +69,7 @@ class Data
   end
 
   def load_rentals
-    return unless File.size?('./data/rentals.json')
+    return [] unless File.size?('./data/rentals.json')
 
     stored_rentals = JSON.parse(File.read('./data/rentals.json'))
     stored_rentals.map do |rental|
@@ -87,5 +87,9 @@ class Data
       File.write('./data/rentals.json',
                  JSON.pretty_generate([{ date: rental.date, book: rental.book, person: rental.person }]))
     end
+  end
+
+  def save_data(books,people,rentals)
+    File.write('./data/rentals.json',JSON.pretty_generate(rentals:rentals)) if rentals.any?
   end
 end
