@@ -49,7 +49,7 @@ class Data
       person_file = JSON.parse(File.read('./data/person.json'))
       if person.instance_of? Student 
        person_file << { name: person.name, age: person.age, parent_permission: person.parent_permission, type: "student"}
-      elsif person.instance_of? Teacher 
+      else person.instance_of? Teacher 
         person_file << { name: person.name, age: person.age, specialization: person.specialization, type: "teacher"}
       end
       File.write('./data/person.json', JSON.pretty_generate(person_file))
@@ -57,7 +57,7 @@ class Data
     else
       if person.instance_of? Student 
         user_file = { name: person.name, age: person.age, parent_permission: person.parent_permission, type: "student"}
-       elsif person.instance_of? Teacher 
+      else person.instance_of? Teacher 
          user_file = { name: person.name, age: person.age, specialization: person.specialization, type: "teacher"}
        end
       File.write('./data/person.json', JSON.pretty_generate([user_file]))
