@@ -12,11 +12,11 @@ class App
   def initialize
     @data = Data.new
     @books = @data.load_books
-    @rentals = @data.load_rentals
     @people = @data.load_person
+    @rentals = @data.load_rentals
   end
 
-def list_books 
+ def list_books 
   @books.each do |book|
    book.instance_variables.each do |var|
     text = ""
@@ -138,7 +138,7 @@ def create_rental
   person = @people[selected_person]
   rental = Rental.new(date, book, person)
   @rentals.push(rental)
-  @data.create_rentals(rental)
+  @data.create_rental(rental)
   puts 'Rental created successfully'
 end
 

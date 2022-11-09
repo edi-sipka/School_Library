@@ -1,7 +1,7 @@
 require 'json'
 require_relative 'book'
-require_relative "person"
-require_relative "rental"
+require_relative 'person'
+require_relative 'rental'
 
 class Data
 
@@ -68,18 +68,18 @@ class Data
     return unless File.size?('./data/rentals.json')
     stored_rentals = JSON.parse(File.read('./data/rentals.json'))
     stored_rentals.map do |rental|
-      @rentals << Rental.new(rental['date'], rental['book'], rental['person'] )
+      @rentals << Rental.new(rental['date'], rental['book'], rental['person'])
     end
     @rentals
   end
 
-  def create_rentals(rental)
+  def create_rental(rental)
     if File.size?('./data/rentals.json')
       rentals_file = JSON.parse(File.read('./data/rentals.json'))
-      rentals_file << { date: rental.date, book: rental.book, person: rental.book}
+      rentals_file << { date: rental.date, book: rental.book, person: rental.person}
       File.write('./data/rentals.json', JSON.pretty_generate(rentals_file))
     else
-      File.write('./data/rentals.json', JSON.pretty_generate([{  date: rental.date, book: rental.book, person: rental.book }]))
+      File.write('./data/rentals.json', JSON.pretty_generate([{  date: rental.date, book: rental.book, person: rental.person }]))
     end
   end
 end
