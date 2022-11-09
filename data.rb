@@ -68,7 +68,7 @@ class Data
 
   def load_rentals
     return unless File.size?('./data/rentals.json')
-    stored_retals = JSON.parse(File.read('./data/rentals.json'))
+    stored_rentals = JSON.parse(File.read('./data/rentals.json'))
     stored_rentals.map do |rental|
       @rentals << Rental.new(rental['date'], rental['book'], rental['person'] )
     end
