@@ -23,4 +23,8 @@ class Select
       puts 'Please select a valid option from the list!'
     end
   end
+
+  def close_app
+    
+  end
 end

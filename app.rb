@@ -63,7 +63,8 @@ class App
     name = gets.chomp
     puts 'Has parent permission? [Y/N]'
     parent_permission = gets.chomp.upcase == 'Y'
-    student = Student.new(age, name, parent_permission, 'Unknown')
+    id = Random.rand(1..1000)
+    student = Student.new(age, name, parent_permission, 'Unknown', id: id)
     @people.push(student)
     @data.create_person(student)
     puts 'You added student successfully'
@@ -76,7 +77,8 @@ class App
     name = gets.chomp
     puts 'Specialization:'
     specialization = gets.chomp
-    teacher = Teacher.new(age, name, specialization)
+    id = Random.rand(1..1000)
+    teacher = Teacher.new(age, name, specialization,id: id)
     @people.push(teacher)
     @data.create_person(teacher)
     puts 'You added teacher successfully'

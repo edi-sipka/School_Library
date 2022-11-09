@@ -1,7 +1,26 @@
 [
   {
-    "date": "45",
-    "book": "#<Book:0x000001a82eacdb18>",
-    "person": "#<Teacher:0x000001a82eacd410>"
+    "date": "25.2.2022",
+    "book": {
+      "title": "Get",
+      "author": "Martin"
+    },
+    "person": {
+      "name": "Edi",
+      "age": "22",
+      "id": 148
+    }
+  },
+  {
+    "date": "04.03.02",
+    "book": {
+      "title": "Lord Rings Kings",
+      "author": "Two Two "
+    },
+    "person": {
+      "name": "Hamza",
+      "age": "25",
+      "id": 950
+    }
   }
 ]
