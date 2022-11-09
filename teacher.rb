@@ -1,4 +1,4 @@
-require_relative "person"
+require_relative 'person'
 
 class Teacher < Person
   attr_reader :specialization
@@ -6,9 +6,9 @@ class Teacher < Person
   def initialize(age, name, specialization)
     super(age, name)
     @specialization = specialization
-end
+  end
 
-def can_use_services?
-  true
-end
+  def can_use_services?
+    true
+  end
 end

@@ -8,5 +8,15 @@
     "date": "2021-04-02",
     "book": "Lord of the Rings",
     "person": "Ahmed"
+  },
+  {
+    "date": "124",
+    "book": "#<Book:0x000001add39fdb98>",
+    "person": null
+  },
+  {
+    "date": "12",
+    "book": "#<Book:0x000001add39fdb98>",
+    "person": "#<Teacher:0x000001add39fd378>"
   }
 ]

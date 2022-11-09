@@ -4,7 +4,6 @@ require_relative 'person'
 require_relative 'rental'
 
 class Data
-
   def initialize
     @books = []
     @person = []
@@ -13,6 +12,7 @@ class Data
 
   def load_books
     return unless File.size?('./data/books.json')
+
     stored_books = JSON.parse(File.read('./data/books.json'))
     stored_books.map do |book|
       @books << Book.new(book['title'], book['author'])
@@ -32,14 +32,15 @@ class Data
 
   def load_person
     return unless File.size?('./data/person.json')
+
     stored_person = JSON.parse(File.read('./data/person.json'))
     stored_person.map do |person|
-
-      if person["type"] == "student"
+      case person['type']
+      when 'student'
         @person << Student.new(person['age'], person['name'], person['parent_permission'])
-      elsif person ["type"] == "teacher"
-        @person << Teacher.new(person['age'], person['name'], person['specialization']) 
-      end 
+      when 'teacher'
+        @person << Teacher.new(person['age'], person['name'], person['specialization'])
+      end
     end
     @person
   end
@@ -47,25 +48,29 @@ class Data
   def create_person(person)
     if File.size?('./data/person.json')
       person_file = JSON.parse(File.read('./data/person.json'))
-      if person.instance_of? Student 
-       person_file << { name: person.name, age: person.age, parent_permission: person.parent_permission, type: "student"}
-      else person.instance_of? Teacher 
-        person_file << { name: person.name, age: person.age, specialization: person.specialization, type: "teacher"}
+      if person.instance_of? Student
+        person_file << { name: person.name, age: person.age, parent_permission: person.parent_permission,
+                         type: 'student' }
+      else
+        person.instance_of? Teacher
+        person_file << { name: person.name, age: person.age, specialization: person.specialization, type: 'teacher' }
       end
       File.write('./data/person.json', JSON.pretty_generate(person_file))
 
     else
-      if person.instance_of? Student 
-        user_file = { name: person.name, age: person.age, parent_permission: person.parent_permission, type: "student"}
-      else person.instance_of? Teacher 
-         user_file = { name: person.name, age: person.age, specialization: person.specialization, type: "teacher"}
-       end
+      if person.instance_of? Student
+        user_file = { name: person.name, age: person.age, parent_permission: person.parent_permission, type: 'student' }
+      else
+        person.instance_of? Teacher
+        user_file = { name: person.name, age: person.age, specialization: person.specialization, type: 'teacher' }
+      end
       File.write('./data/person.json', JSON.pretty_generate([user_file]))
     end
   end
 
   def load_rentals
     return unless File.size?('./data/rentals.json')
+
     stored_rentals = JSON.parse(File.read('./data/rentals.json'))
     stored_rentals.map do |rental|
       @rentals << Rental.new(rental['date'], rental['book'], rental['person'])
@@ -76,10 +81,11 @@ class Data
   def create_rental(rental)
     if File.size?('./data/rentals.json')
       rentals_file = JSON.parse(File.read('./data/rentals.json'))
-      rentals_file << { date: rental.date, book: rental.book, person: rental.person}
+      rentals_file << { date: rental.date, book: rental.book, person: rental.person }
       File.write('./data/rentals.json', JSON.pretty_generate(rentals_file))
     else
-      File.write('./data/rentals.json', JSON.pretty_generate([{  date: rental.date, book: rental.book, person: rental.person }]))
+      File.write('./data/rentals.json',
+                 JSON.pretty_generate([{ date: rental.date, book: rental.book, person: rental.person }]))
     end
   end
 end
