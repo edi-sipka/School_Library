@@ -12,7 +12,7 @@ class App
   def initialize
     @data = Data.new
     @books = @data.load_books
-    @rentals = []
+    @rentals = @data.load_rentals
     @people = @data.load_person
   end
 
@@ -138,6 +138,7 @@ def create_rental
   person = @people[selected_person]
   rental = Rental.new(date, book, person)
   @rentals.push(rental)
+  @data.create_rentals(rental)
   puts 'Rental created successfully'
 end
 

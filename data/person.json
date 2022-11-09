@@ -28,5 +28,11 @@
     "age": "11",
     "parent_permission": false,
     "type": "student"
+  },
+  {
+    "name": "Edi",
+    "age": "2",
+    "parent_permission": true,
+    "type": "student"
   }
 ]
