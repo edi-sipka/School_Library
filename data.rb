@@ -32,6 +32,7 @@ class Data
 
   def load_person
     return unless File.size?('./data/person.json')
+
     stored_person = JSON.parse(File.read('./data/person.json'))
     stored_person.map do |person|
       case person['type']
@@ -52,16 +53,19 @@ class Data
                          type: 'student', id: person.id }
       else
         person.instance_of? Teacher
-        person_file << { name: person.name, age: person.age, specialization: person.specialization, type: 'teacher', id: person.id }
+        person_file << { name: person.name, age: person.age, specialization: person.specialization, type: 'teacher',
+                         id: person.id }
       end
       File.write('./data/person.json', JSON.pretty_generate(person_file))
 
     else
       if person.instance_of? Student
-        user_file = { name: person.name, age: person.age, parent_permission: person.parent_permission, type: 'student', id: person.id }
+        user_file = { name: person.name, age: person.age, parent_permission: person.parent_permission, type: 'student',
+                      id: person.id }
       else
         person.instance_of? Teacher
-        user_file = { name: person.name, age: person.age, specialization: person.specialization, type: 'teacher', id: person.id }
+        user_file = { name: person.name, age: person.age, specialization: person.specialization, type: 'teacher',
+                      id: person.id }
       end
       File.write('./data/person.json', JSON.pretty_generate([user_file]))
     end
@@ -72,10 +76,10 @@ class Data
 
     stored_rentals = JSON.parse(File.read('./data/rentals.json'))
     stored_rentals.map do |rental|
-      person_id = rental["person"]["id"]
-      find_person = @person.find {|person| person_id == person.id }
-      book_title = rental["book"]["title"]
-      find_book = @books.find {|book| book_title == book.title }
+      person_id = rental['person']['id']
+      find_person = @person.find { |person| person_id == person.id }
+      book_title = rental['book']['title']
+      find_book = @books.find { |book| book_title == book.title }
       @rentals << Rental.new(rental['date'], find_book, find_person)
     end
     @rentals
@@ -96,19 +100,19 @@ class Data
     else
       File.write('./data/rentals.json',
                  JSON.pretty_generate([date: rental.date, book: {
-                  title: rental.book.title,
-                  author: rental.book.author
-                }, person: {
-                  name: rental.person.name,
-                  age: rental.person.age,
-                  id: rental.person.id
-                }]))
+                                        title: rental.book.title,
+                                        author: rental.book.author
+                                      }, person: {
+                                        name: rental.person.name,
+                                        age: rental.person.age,
+                                        id: rental.person.id
+                                      }]))
     end
   end
 
-  def save_data(books,person,rentals)
-    File.write('./data/rentals.json',JSON.pretty_generate(rentals)) if rentals.any?
-    File.write('./data/books.json',JSON.pretty_generate(books)) if books.any?
-    File.write('./data/person.json',JSON.pretty_generate(person)) if person.any?
+  def save_data(books, person, rentals)
+    File.write('./data/rentals.json', JSON.pretty_generate(rentals)) if rentals.any?
+    File.write('./data/books.json', JSON.pretty_generate(books)) if books.any?
+    File.write('./data/person.json', JSON.pretty_generate(person)) if person.any?
   end
 end
