@@ -24,7 +24,5 @@ class Select
     end
   end
 
-  def close_app
-    
-  end
+  def close_app; end
 end

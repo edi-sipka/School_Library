@@ -78,7 +78,7 @@ class App
     puts 'Specialization:'
     specialization = gets.chomp
     id = Random.rand(1..1000)
-    teacher = Teacher.new(age, name, specialization,id: id)
+    teacher = Teacher.new(age, name, specialization, id: id)
     @people.push(teacher)
     @data.create_person(teacher)
     puts 'You added teacher successfully'
